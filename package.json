@@ -1,0 +1,10 @@
+{
+  "name": "desafio_teste_sudoku",
+  "version": "1.0.0",
+  "description": "Casos de teste em JavaScript para um Sudoku binário 6 x 6",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
