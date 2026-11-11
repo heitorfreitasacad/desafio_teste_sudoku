@@ -1,10 +1,12 @@
 {
   "name": "desafio_teste_sudoku",
   "version": "1.0.0",
-  "description": "Casos de teste em JavaScript para um Sudoku binário 6 x 6",
-  "type": "module",
+  "description": "Casos de teste em JavaScript (Jest) para um Sudoku binário 6 x 6",
   "scripts": {
-    "test": "node --test"
+    "test": "jest"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
