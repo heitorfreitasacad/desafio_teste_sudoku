@@ -1,6 +1,6 @@
 # desafio_teste_sudoku
 
-Casos de teste em JavaScript para testar um **Sudoku binário 6 x 6** em JavaScript.
+Casos de teste em JavaScript (Jest) para testar um **Sudoku binário 6 x 6** em JavaScript.
 
 Este repositório tem **só os testes**. O jogo deve ser implementado a partir da especificação abaixo e precisa passar em todos os casos de teste.
 
@@ -24,14 +24,16 @@ Sudoku binário (também chamado Takuzu ou Binairo) com grade de **6 x 6**.
 
 ### Contrato da implementação
 
-Os testes importam o jogo de **`src/sudokuBinario.js`**, como módulo ES (o `package.json` usa `"type": "module"`). O arquivo deve exportar:
+Os testes importam o jogo de **`src/sudokuBinario.js`** com `require('../src/sudokuBinario')`. O arquivo deve usar CommonJS e exportar:
 
 ```js
-export const TAMANHO = 6;
-export const VAZIO = null;               // valor de célula vazia
-export function lerGrade(texto) { ... }
-export function sequenciaValida(seq) { ... }
-export class SudokuBinario { ... }
+const TAMANHO = 6;
+const VAZIO = null;               // valor de célula vazia
+function lerGrade(texto) { ... }
+function sequenciaValida(seq) { ... }
+class SudokuBinario { ... }
+
+module.exports = { SudokuBinario, TAMANHO, VAZIO, lerGrade, sequenciaValida };
 ```
 
 #### Funções
@@ -78,11 +80,15 @@ Erros dos métodos `jogar` e `limpar`:
 
 ## Casos de teste
 
-Os testes usam o executor nativo do Node (`node:test` + `node:assert`). Não há dependências para instalar.
+Os testes usam o [Jest](https://jestjs.io/) (`describe`, `it` e `expect`).
 
 ### Como rodar
 
-Requer Node.js 18 ou mais recente. Com a implementação em `src/sudokuBinario.js`, rode:
+Requer Node.js 18 ou mais recente. Com a implementação em `src/sudokuBinario.js`, instale as dependências e rode os testes:
+
+```bash
+npm install
+```
 
 ```bash
 npm test
@@ -112,4 +118,4 @@ PUZZLE      SOLUÇÃO
 | Fim de jogo | grade inicial não resolvida, solução reconhecida, resolver jogada a jogada, grade cheia com regra quebrada não vale |
 | Resolvedor | chega à solução esperada, solução única, mantém as pistas, detecta grade sem solução, e a grade 6 x 6 vazia tem exatamente **4140** soluções (valor conhecido, sequência A253316 da OEIS) |
 
-São 31 casos de teste. Uma implementação correta deve terminar com `pass 31 | fail 0`.
+São 31 casos de teste. Uma implementação correta deve terminar com `Tests: 31 passed, 31 total`.
